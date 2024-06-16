@@ -28,7 +28,7 @@ float solve(int last, int bitmask) {
 
     float result = INF;
     float &ans = dp[last][bitmask];
-    // if (visited[last][bitmask] != -1) return ans;
+    if (visited[last][bitmask] != -1) return ans;
 
     for (int i = 0; i < n; i++) {
         if (!(bitmask & 1 << i)) {
@@ -83,7 +83,7 @@ int main() {
 
         for (int i = 0; i < n; i++) {
             // cout << i << endl;
-            memset(dp, -1, sizeof(visited));
+            memset(visited, -1, sizeof(visited));
             float result = solve(i, 1 << i);
             // recover(i);
             // cout << result << endl;
@@ -97,7 +97,7 @@ int main() {
         // cout << "Escolhido: " << pos << endl;
         // continue;
         //
-        memset(dp, -1, sizeof(visited));
+        memset(visited, -1, sizeof(visited));
 
         // cout << "POSICAO MELHOR: " << pos << endl;
         // float result = solve(pos);
