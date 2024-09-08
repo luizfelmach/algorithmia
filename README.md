@@ -82,7 +82,7 @@ double bisection(double lo, double hi) {
 // Very useful for finding max/min values between interval
 
 // F(x)
-// ^                 goal
+// ^                 Goal
 // |                o
 // |             *     *
 // |           *         *
