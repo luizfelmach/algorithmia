@@ -63,7 +63,7 @@
 // |          *              |
 // |            *            *
 // |              *       *   F(hi)
-// |                * * *
+// |                *   * *
 
 double bisection(double lo, double hi) {
     for (int i = 0; i < 100; i++) {
@@ -72,6 +72,7 @@ double bisection(double lo, double hi) {
         if (F > 0) lo = mid;
         else hi = mid;
     }
+    return lo;
 }
 ```
 
