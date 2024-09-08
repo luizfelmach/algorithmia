@@ -30,6 +30,24 @@
 | \_\_builtin_popcount(x) |        Número de bits 1 na representação binária de `x`.        |
 |  \_\_builtin_parity(x)  | Paridade do número de bits 1 em `x` (0 para par, 1 para ímpar). |
 
+### Tortoise and Hare Algorithm (Cycle Detection)
+
+- Comece com dois ponteiros apontando para o início da lista: T e L.
+- Em um laço:
+  - Incremente T em **uma** posição.
+  - Incremente L em **duas** posições.
+  - Se T e L forem iguais, pare o laço.
+- Volte T para o início da lista e mantenha L onde estava.
+- Em um laço:
+  - Incremente T em **uma** posição.
+  - Incremente L em **uma** posição.
+  - Se T forem iguais, pare o laço e armazene a posição.
+- Inicialize um contador `i` com o valor zero.
+- Em um laço:
+  - Incremente L em **uma** posição.
+  - Incremente o valor de `i`.
+  - Se T e L forem iguais, pare o laço. (`i` será o tamanho do ciclo.)
+
 ### Graph
 
 ```cpp
