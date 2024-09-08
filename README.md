@@ -142,7 +142,6 @@ int main() {
     auto u2 = upper_bound(begin(v), end(v), 100);
     auto u3 = upper_bound(begin(v), end(v), 25);
 
-    cout << "Upper Bound" << endl;
     cout << "Found 20: " << (u1 != v.end()) << endl;            // true
     cout << "Found 100: " << (u2 != v.end()) << endl;           // false
     cout << "Found 25: " << (u3 != v.end()) << endl;            // true
