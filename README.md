@@ -48,6 +48,33 @@
   - Incremente o valor de `i`.
   - Se T e L forem iguais, pare o laço. (`i` será o tamanho do ciclo.)
 
+### D&C (Divide and Conquer)
+
+```cpp
+// Bisection Method
+
+// F(x)
+// ^     F(lo)
+// |   *
+// |   | *
+// |   |  *
+// |   |   *  Goal
+// |---|----O-------------------------> x
+// |          *              |
+// |            *            *
+// |              *       *   F(hi)
+// |                * * *
+
+double bisection(double lo, double hi) {
+    for (int i = 0; i < 100; i++) {
+        double mid = (lo + hi) / 2;
+        double F = f(mid); // Declare a function
+        if (F > 0) lo = mid;
+        else hi = mid;
+    }
+}
+```
+
 ### Graph
 
 ```cpp
