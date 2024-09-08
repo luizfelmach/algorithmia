@@ -156,7 +156,7 @@ int main() {
 }
 ```
 
-# Sorting
+### Sorting
 
 ```cpp
 // Merge sort with inversion counter
@@ -164,7 +164,7 @@ int main() {
 int merge(int *arr, int *aux, int lo, int hi, int mid) {
     int inv = 0;
     for (int k = lo; k <= hi; k++) aux[k] = arr[k];
-    int i = lo;
+         int i = lo;
     int j = mid + 1;
     for (int k = lo; k <= hi; k++) {
         if (i > mid) arr[k] = aux[j++];
