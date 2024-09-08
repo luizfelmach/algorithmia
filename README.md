@@ -38,7 +38,7 @@ void bfs(vector<vi> G, int s, bool vis[]) {
 ```cpp
 // Dijkstra
 
-vi dijkstra(vector<vi> G, vector<vi> w, int s) {
+vi dijkstra(vector<vii> G, int s) {
     vi dist(G.size(), INF);
     dist[s] = 0;
     priority_queue<ii, vii, greater<ii>> pq;
@@ -47,11 +47,12 @@ vi dijkstra(vector<vi> G, vector<vi> w, int s) {
         int v = pq.top().second;
         pq.pop();
         for (auto u : G[v]) {
-            if (dist[u] > dist[v] + w[v][u]) {
-                dist[u] = dist[v] + w[v][u];
-                pq.push({dist[u], u})
+            if (dist[u.first] > dist[v] + u.second) {
+                dist[u.first] = dist[v] + u.second;
+                pq.push({dist[u.first], u.first});
             }
         }
     }
+    return dist;
 }
 ```
