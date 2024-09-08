@@ -1,5 +1,23 @@
 # Algorithms
 
+### Bitwise
+
+|        Operação         |                            Descrição                            |
+| :---------------------: | :-------------------------------------------------------------: |
+|      x & (1 << k)       |                Verifica se o bit `k` está ativo.                |
+|    x &#124; (1 << k)    |                     Seta o bit `k` como 1.                      |
+|      x & ~(1 << k)      |                     Seta o bit `k` como 0.                      |
+|      x ^ (1 << k)       |                       Inverte o bit `k`.                        |
+|       x & (x - 1)       |           Seta o bit menos significativo de 1 para 0.           |
+|         x & -x          |     Seta todos os bits exceto o menos significativo para 0.     |
+|    x &#124; (x - 1)     |       Inverte todos os bits antes do menos significativo.       |
+|    x & (x - 1) == 0     |          Verifica se um número é uma potência de dois.          |
+|        1LL << k         |                      Shift para long long.                      |
+|   \_\_builtin_clz(x)    |   Número de zeros à esquerda na representação binária de `x`.   |
+|   \_\_builtin_ctz(x)    |   Número de zeros à direita na representação binária de `x`.    |
+| \_\_builtin_popcount(x) |        Número de bits 1 na representação binária de `x`.        |
+|  \_\_builtin_parity(x)  | Paridade do número de bits 1 em `x` (0 para par, 1 para ímpar). |
+
 ### Graph
 
 ```cpp
