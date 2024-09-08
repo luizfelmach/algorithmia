@@ -107,6 +107,57 @@ double ternary_search(double l, double r) {
 }
 ```
 
+```cpp
+//  - binary_search
+//  - lower_bound
+//  - upper_bound
+//  - equal_range
+
+int main() {
+    vector<int> v = {10, 20, 30, 30, 20, 10, 10, 20};
+
+    sort(begin(v), end(v));
+
+    for (auto i : v) {
+        cout << i << " ";  // 10 10 10 20 20 20 30 30
+    }
+    cout << endl;
+
+    cout << binary_search(begin(v), end(v), 12) << endl;  // false
+    cout << binary_search(begin(v), end(v), 30) << endl;  // true
+
+    // Estamos buscando o primeiro elemento que seja >= x
+    auto l1 = lower_bound(begin(v), end(v), 20);
+    auto l2 = lower_bound(begin(v), end(v), 100);
+    auto l3 = lower_bound(begin(v), end(v), 25);
+
+    cout << "Found 20: " << (l1 != v.end()) << endl;            // true
+    cout << "Found 100: " << (l2 != v.end()) << endl;           // false
+    cout << "Found 25: " << (l3 != v.end()) << endl;            // true
+    cout << "Where is 20: " << (l1 - v.begin()) << endl;        // 3
+    cout << "Lower bound of 25: " << (l3 - v.begin()) << endl;  // 6
+
+    // Estamos buscando o primeiro elemento que seja > x
+    auto u1 = upper_bound(begin(v), end(v), 20);
+    auto u2 = upper_bound(begin(v), end(v), 100);
+    auto u3 = upper_bound(begin(v), end(v), 25);
+
+    cout << "Upper Bound" << endl;
+    cout << "Found 20: " << (u1 != v.end()) << endl;            // true
+    cout << "Found 100: " << (u2 != v.end()) << endl;           // false
+    cout << "Found 25: " << (u3 != v.end()) << endl;            // true
+    cout << "Where is 20: " << (u1 - v.begin()) << endl;        // 6
+    cout << "Upper bound of 25: " << (u3 - v.begin()) << endl;  // 6
+
+    cout << "Equal Range" << endl;
+    auto eq = equal_range(begin(v), end(v), 20);
+    cout << *eq.first << " " << *eq.second << endl;  // 20 30
+
+    return 0;
+}
+
+```
+
 ### Graph
 
 ```cpp
