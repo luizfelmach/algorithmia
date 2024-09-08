@@ -52,6 +52,7 @@
 
 ```cpp
 // Bisection Method
+// Very useful for finding roots of a function
 
 // F(x)
 // ^     F(lo)
