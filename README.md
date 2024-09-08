@@ -80,7 +80,7 @@ int bellman_ford(vector<iii> E, int v_size, int s) {
         int v = get<1>(uv);
         int w = get<2>(uv);
         if (dist[u] + w < dist[v]) {
-            return 0; // Negative cycle;
+            return 0; // Negative cycle
         }
     }
     return 1;
