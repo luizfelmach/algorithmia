@@ -1,5 +1,17 @@
 # Algorithms
 
+### Complexity
+
+|    n    |  Worst AC algorithm   | e.g.                              |
+| :-----: | :-------------------: | :-------------------------------- |
+|  <= 10  |     O(n!), O(n⁶)      | Permutation                       |
+|  <= 20  |     O(2ⁿ), O(n⁵)      | DP + Bitmask                      |
+|  <= 50  |         O(n⁴)         | DP with 3d + O(n) loop            |
+| <= 100  |         O(n³)         | Floyd Warshall's                  |
+|  <= 1K  |         O(n²)         | Bubble/Selection/Insertion Sort   |
+| <= 100K |      O(nlog(n))       | Merge Sort, building Segment Tree |
+|  <= 1M  | O(n), O(log(n)), O(1) | Binary search                     |
+
 ### Bitwise
 
 |        Operação         |                            Descrição                            |
