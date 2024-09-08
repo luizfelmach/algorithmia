@@ -58,6 +58,23 @@ vi dijkstra(vector<vii> G, int s) {
 ```
 
 ```cpp
+// Floyd-Warshall
+// v_size = number of vertices
+// dist[i][j] = 0 <-> i = j
+// dist[i][j] = dist[i][j] if exists edge to (i, j)
+// dist[i][j] = INF if there is no edge to (i, j)
+
+void floyd_warshall(vector<vi> dist, int v_size) {
+    for (int k = 0; k < v_size; k++)
+        for (int i = 0; i < v_size; i++)
+            for (int j = 0; j < v_size; j++)
+                if (dist[i][j] > dist[i][k] + dist[k][j])
+                    dist[i][j] =  dist[i][k] + dist[k][j];
+
+}
+```
+
+```cpp
 // Bellman-Ford
 // v_size = number of vertices
 // typedef tuple<int, int, int> iii;
