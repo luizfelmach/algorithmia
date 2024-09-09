@@ -386,10 +386,10 @@ int bellman_ford(int s) {
 // Min-Cut/Max-Flow problem
 
 int        V;
-vector<vi> adj;
 vector<vi> capacity;
+vector<vi> adj;
 
-int bfs(int s, int t, vector<int>& parent) {
+int bfs(int s, int t, vi& parent) {
     fill(parent.begin(), parent.end(), -1);
     parent[s] = -2;
     queue<pair<int, int>> q;
@@ -412,9 +412,9 @@ int bfs(int s, int t, vector<int>& parent) {
 }
 
 int maxflow(int s, int t) {
-    int         flow = 0;
-    vector<int> parent(V);
-    int         new_flow;
+    int flow = 0;
+    vi  parent(V);
+    int new_flow;
     while ((new_flow = bfs(s, t, parent))) {
         flow += new_flow;
         int cur = t;
