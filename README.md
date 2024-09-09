@@ -310,6 +310,53 @@ int bipartite() {
 ```
 
 ```cpp
+// Tarjan's Algorithm
+// Finding strongly connected components (Directed Graph)
+
+int        V;
+vector<vi> adj;
+bool       vis[VMAX];
+int        dfslow[VMAX];
+int        dfsnum[VMAX];
+int        scc_counter;
+int        dfs_counter;
+stack<int> aux;
+
+void tarjan_scc(int s) {
+    dfslow[s] = dfsnum[s] = dfs_counter++;
+    aux.push(s);
+    vis[s] = 1;
+
+    for (auto a : adj[s]) {
+        if (!dfsnum[a]) tarjan_scc(a);
+        if (vis[a]) dfslow[s] = min(dfslow[s], dfslow[a]);
+    }
+
+    if (dfslow[s] == dfsnum[s]) {
+        scc_counter += 1;
+        while (1) {
+            int v = aux.top();
+            aux.pop();
+            vis[v] = 0;
+            if (s == v) break;
+        }
+    }
+}
+
+int scc() {
+    memset(dfsnum, 0, sizeof(dfsnum));
+    memset(dfslow, 0, sizeof(dfslow));
+    memset(vis, false, sizeof(vis));
+    while (!aux.empty()) aux.pop();
+    dfs_counter = scc_counter = 0;
+    for (int i = 0; i < V; i++) {
+        if (!dfsnum[i]) tarjan_scc(i);
+    }
+    return scc_counter;
+}
+```
+
+```cpp
 // Dijkstra
 
 int         V;
