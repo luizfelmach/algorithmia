@@ -1,49 +1,45 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef vector<int> vi;
+typedef vector<int>    vi;
+typedef pair<int, int> ii;
 
 const int VMAX = 1000;
 
 int        V;
 vector<vi> adj;
-int        parent[VMAX];
-int        dfslow[VMAX];
-int        dfsnum[VMAX];
-int        articulation[VMAX];
-int        bridge[VMAX][VMAX];
-int        dfs_counter;
-int        root_children;
-int        dfs_root;
+vector<ii> bridges;
+vi         articulation, parent, dfslow, dfsnum;  // VMAX
+int        TIME, ROOT, CHILDREN;
 
 void articulation_and_bridge(int s) {
-    dfslow[s] = dfsnum[s] = ++dfs_counter;
+    dfslow[s] = dfsnum[s] = ++TIME;
     for (auto a : adj[s]) {
         if (!dfsnum[a]) {
             parent[a] = s;
-            if (s == dfs_root) root_children += 1;
+            if (s == ROOT) CHILDREN += 1;
             articulation_and_bridge(a);
             if (dfslow[a] >= dfsnum[s]) articulation[s] = true;
-            if (dfslow[a] > dfsnum[s]) bridge[s][a] = true;
+            if (dfslow[a] > dfsnum[s]) bridges.push_back({a, s});
             dfslow[s] = min(dfslow[s], dfslow[a]);
         } else if (a != parent[s])
             dfslow[s] = min(dfslow[s], dfsnum[a]);
     }
 }
 
-void AP() {
-    dfs_counter = 0;
-    memset(bridge, 0, sizeof(bridge));
-    memset(articulation, 0, sizeof(articulation));
-    memset(dfsnum, 0, sizeof(dfsnum));
-    memset(dfslow, 0, sizeof(dfslow));
-    memset(parent, 0, sizeof(parent));
+void find_articulation_and_bridge() {
+    TIME         = 0;
+    bridges      = vector<ii>(0);
+    articulation = vi(V, 0);
+    dfsnum       = vi(V, 0);
+    dfslow       = vi(V, 0);
+    parent       = vi(V, 0);
     for (int i = 0; i < V; i++) {
         if (!dfsnum[i]) {
-            dfs_root      = i;
-            root_children = 0;
+            ROOT     = i;
+            CHILDREN = 0;
             articulation_and_bridge(i);
-            articulation[dfs_root] = (root_children > 1);
+            articulation[ROOT] = (CHILDREN > 1);
         }
     }
 }
@@ -71,7 +67,7 @@ int main() {
             }
         }
 
-        AP();
+        find_articulation_and_bridge();
 
         int res = 0;
         for (int i = 0; i < V; i++) {
