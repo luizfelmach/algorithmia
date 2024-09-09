@@ -386,8 +386,8 @@ int bellman_ford(int s) {
 // Min-Cut/Max-Flow problem
 
 int        V;
-vector<vi> capacity;
 vector<vi> adj;
+vector<vi> capacity;
 
 int bfs(int s, int t, vi& parent) {
     fill(parent.begin(), parent.end(), -1);
