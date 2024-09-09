@@ -372,10 +372,10 @@ int bellman_ford(int s) {
     for (auto uv : edges) {
         auto [u, v, w] = uv;
         if (dist[u] + w < dist[v]) {
-            return 0;  // Negative cycle
+            return true;  // Negative cycle
         }
     }
-    return 1;
+    return false;
 }
 ```
 
