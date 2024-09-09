@@ -197,6 +197,9 @@ int mergesort(int *arr, int *aux, int lo, int hi) {
 int        V;
 vector<vi> adj;
 bool       vis[VMAX];
+vi         topsort; // Topological Sort.
+                    // Only works in directed acyclic graph.
+
 
 void dfs(int s) {
     vis[s] = true;
@@ -205,6 +208,7 @@ void dfs(int s) {
             dfs(a);
         }
     }
+    topsort.push_back(s); // Only works in DAG.
 }
 ```
 
