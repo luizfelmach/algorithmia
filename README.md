@@ -365,13 +365,13 @@ vector<ii> bridges;
 vi         articulation, parent, dfslow, dfsnum;  // VMAX
 int        TIME, ROOT, CHILDREN;
 
-void articulation_and_bridge(int s) {
+void dfs(int s) {
     dfslow[s] = dfsnum[s] = ++TIME;
     for (auto a : adj[s]) {
         if (!dfsnum[a]) {
             parent[a] = s;
             if (s == ROOT) CHILDREN += 1;
-            articulation_and_bridge(a);
+            dfs(a);
             if (dfslow[a] >= dfsnum[s]) articulation[s] = true;
             if (dfslow[a] > dfsnum[s]) bridges.push_back({a, s});
             dfslow[s] = min(dfslow[s], dfslow[a]);
@@ -391,7 +391,7 @@ void find_articulation_and_bridge() {
         if (!dfsnum[i]) {
             ROOT     = i;
             CHILDREN = 0;
-            articulation_and_bridge(i);
+            dfs(i);
             articulation[ROOT] = (CHILDREN > 1);
         }
     }
