@@ -200,7 +200,6 @@ bool       vis[VMAX];
 vi         topsort; // Topological Sort.
                     // Only works in directed acyclic graph.
 
-
 void dfs(int s) {
     vis[s] = true;
     for (auto a : adj[s]) {
