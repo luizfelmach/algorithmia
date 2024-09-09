@@ -194,11 +194,15 @@ int mergesort(int *arr, int *aux, int lo, int hi) {
 ```cpp
 // Depth first search
 
-void dfs(vector<vi> G, int s, bool vis[]) {
+int        V;
+vector<vi> adj;
+bool       vis[VMAX];
+
+void dfs(int s) {
     vis[s] = true;
-    for (auto a : G[s]) {
+    for (auto a : adj[s]) {
         if (!vis[a]) {
-            dfs(G, a, vis);
+            dfs(a);
         }
     }
 }
@@ -207,14 +211,18 @@ void dfs(vector<vi> G, int s, bool vis[]) {
 ```cpp
 // Breadth first search
 
-void bfs(vector<vi> G, int s, bool vis[]) {
-    queue<int> f; // Stack -> DFS
+int        V;
+vector<vi> adj;
+bool       vis[VMAX];
+
+void bfs(int s) {
+    queue<int> f;  // Stack -> DFS
     f.push(s);
     vis[s] = true;
     while (!f.empty()) {
         int v = f.front();
         f.pop();
-        for (auto a : G[v]) {
+        for (auto a : adj[v]) {
             if (!vis[a]) {
                 vis[a] = true;
                 f.push(a);
