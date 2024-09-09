@@ -385,9 +385,9 @@ int bellman_ford(int s) {
 // Ford-Fulkerson Algorithm
 // Min-Cut/Max-Flow problem
 
-int n;
-vector<vector<int>> capacity;
-vector<vector<int>> adj;
+int        V;
+vector<vi> adj;
+vector<vi> capacity;
 
 int bfs(int s, int t, vector<int>& parent) {
     fill(parent.begin(), parent.end(), -1);
@@ -395,7 +395,7 @@ int bfs(int s, int t, vector<int>& parent) {
     queue<pair<int, int>> q;
     q.push({s, INF});
     while (!q.empty()) {
-        int cur = q.front().first;
+        int cur  = q.front().first;
         int flow = q.front().second;
         q.pop();
 
@@ -403,8 +403,7 @@ int bfs(int s, int t, vector<int>& parent) {
             if (parent[next] == -1 && capacity[cur][next]) {
                 parent[next] = cur;
                 int new_flow = min(flow, capacity[cur][next]);
-                if (next == t)
-                    return new_flow;
+                if (next == t) return new_flow;
                 q.push({next, new_flow});
             }
         }
@@ -413,10 +412,10 @@ int bfs(int s, int t, vector<int>& parent) {
 }
 
 int maxflow(int s, int t) {
-    int flow = 0;
-    vector<int> parent(n);
-    int new_flow;
-    while (new_flow = bfs(s, t, parent)) {
+    int         flow = 0;
+    vector<int> parent(V);
+    int         new_flow;
+    while ((new_flow = bfs(s, t, parent))) {
         flow += new_flow;
         int cur = t;
         while (cur != s) {
