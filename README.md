@@ -323,13 +323,11 @@ stack<int> aux;
 void tarjan_scc(int s) {
     dfslow[s] = dfsnum[s] = ++TIME;
     aux.push(s);
-    vis[s] = 1;
-
+    vis[s] = true;
     for (auto a : adj[s]) {
         if (!dfsnum[a]) tarjan_scc(a);
         if (vis[a]) dfslow[s] = min(dfslow[s], dfslow[a]);
     }
-
     if (dfslow[s] == dfsnum[s]) {
         SCC += 1;
         while (1) {
