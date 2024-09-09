@@ -214,6 +214,7 @@ void dfs(int s) {
 int        V;
 vector<vi> adj;
 bool       vis[VMAX];
+int        dist[VMAX];
 
 void bfs(int s) {
     queue<int> f;  // Stack -> DFS
@@ -225,6 +226,7 @@ void bfs(int s) {
         for (auto a : adj[v]) {
             if (!vis[a]) {
                 vis[a] = true;
+                dist[a] = dist[v] + 1;
                 f.push(a);
             }
         }
