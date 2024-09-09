@@ -349,14 +349,18 @@ void floyd_warshall() {
 
 ```cpp
 // Bellman-Ford
-// v_size = number of vertices
-// typedef tuple<int, int, int> iii;
 
-int bellman_ford(vector<iii> E, int v_size, int s) {
-    vi dist(v_size, INF);
+typedef tuple<int, int, int> iii;
+
+int         V;
+vector<iii> edges;  // <u, v, w>
+int         dist[VMAX];
+
+int bellman_ford(int s) {
+    memset(dist, INF, sizeof(dist));
     dist[s] = 0;
-    for (int i = 0; i < v_size -1; i++) {
-        for (auto uv : E) {
+    for (int i = 0; i < V - 1; i++) {
+        for (auto uv : edges) {
             int u = get<0>(uv);
             int v = get<1>(uv);
             int w = get<2>(uv);
@@ -365,12 +369,12 @@ int bellman_ford(vector<iii> E, int v_size, int s) {
             }
         }
     }
-    for (auto uv : E) {
+    for (auto uv : edges) {
         int u = get<0>(uv);
         int v = get<1>(uv);
         int w = get<2>(uv);
         if (dist[u] + w < dist[v]) {
-            return 0; // Negative cycle
+            return 0;  // Negative cycle
         }
     }
     return 1;
