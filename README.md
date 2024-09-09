@@ -326,12 +326,10 @@ void tarjan_scc(int s) {
     dfslow[s] = dfsnum[s] = dfs_counter++;
     aux.push(s);
     vis[s] = 1;
-
     for (auto a : adj[s]) {
         if (!dfsnum[a]) tarjan_scc(a);
         if (vis[a]) dfslow[s] = min(dfslow[s], dfslow[a]);
     }
-
     if (dfslow[s] == dfsnum[s]) {
         scc_counter += 1;
         while (1) {
