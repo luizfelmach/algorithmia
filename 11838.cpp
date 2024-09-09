@@ -8,15 +8,13 @@ typedef vector<int> vi;
 
 int        V;
 vector<vi> adj;
+vi         dfslow, dfsnum;
 bool       vis[VMAX];
-int        dfslow[VMAX];
-int        dfsnum[VMAX];
-int        scc_counter;
-int        dfs_counter;
+int        SCC, TIME;
 stack<int> aux;
 
 void tarjan_scc(int s) {
-    dfslow[s] = dfsnum[s] = dfs_counter++;
+    dfslow[s] = dfsnum[s] = ++TIME;
     aux.push(s);
     vis[s] = 1;
 
@@ -26,7 +24,7 @@ void tarjan_scc(int s) {
     }
 
     if (dfslow[s] == dfsnum[s]) {
-        scc_counter += 1;
+        SCC += 1;
         while (1) {
             int v = aux.top();
             aux.pop();
@@ -37,11 +35,11 @@ void tarjan_scc(int s) {
 }
 
 void scc() {
-    memset(dfsnum, 0, sizeof(dfsnum));
-    memset(dfslow, 0, sizeof(dfslow));
+    aux    = stack<int>();
+    dfslow = vi(V, 0);
+    dfsnum = vi(V, 0);
     memset(vis, false, sizeof(vis));
-    while (!aux.empty()) aux.pop();
-    dfs_counter = scc_counter = 0;
+    TIME = SCC = 0;
     for (int i = 0; i < V; i++) {
         if (!dfsnum[i]) tarjan_scc(i);
     }
@@ -67,7 +65,7 @@ int main() {
 
         scc();
 
-        if (scc_counter == 1) {
+        if (SCC == 1) {
             cout << 1 << endl;
         } else {
             cout << 0 << endl;
