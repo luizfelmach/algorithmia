@@ -228,13 +228,13 @@ void bfs(vector<vi> G, int s, bool vis[]) {
 // Cycle detection in an undirected graph
 
 int        V;
-vector<vi> G;
-int        parent[1000];
-bool       vis[1000];
+vector<vi> adj;
+int        parent[VMAX];
+bool       vis[VMAX];
 
 int dfs(int s) {
     vis[s] = true;
-    for (auto a : G[s]) {
+    for (auto a : adj[s]) {
         if (!vis[a]) {
             parent[a] = s;
             if (dfs(a)) return true;
