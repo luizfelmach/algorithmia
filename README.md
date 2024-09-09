@@ -363,18 +363,14 @@ int bellman_ford(int s) {
     dist[s] = 0;
     for (int i = 0; i < V - 1; i++) {
         for (auto uv : edges) {
-            int u = get<0>(uv);
-            int v = get<1>(uv);
-            int w = get<2>(uv);
+            tie(u, v, w) = uv;
             if (dist[u] + w < dist[v]) {
                 dist[v] = dist[u] + w;
             }
         }
     }
     for (auto uv : edges) {
-        int u = get<0>(uv);
-        int v = get<1>(uv);
-        int w = get<2>(uv);
+        tie(u, v, w) = uv;
         if (dist[u] + w < dist[v]) {
             return 0;  // Negative cycle
         }
