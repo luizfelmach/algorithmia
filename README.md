@@ -362,7 +362,7 @@ int scc() {
 int        V;
 vector<vi> adj;
 vector<ii> bridges;
-vi         articulation, parent, dfslow, dfsnum;  // VMAX
+vi         articulation, parent, dfslow, dfsnum;
 int        TIME, ROOT, CHILDREN;
 
 void dfs(int s) {
