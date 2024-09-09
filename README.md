@@ -225,6 +225,38 @@ void bfs(vector<vi> G, int s, bool vis[]) {
 ```
 
 ```cpp
+// Cycle detection in an undirected graph
+
+int        V;
+vector<vi> G;
+int        parent[1000];
+bool       vis[1000];
+
+int dfs(int s) {
+    vis[s] = true;
+    for (auto a : G[s]) {
+        if (!vis[a]) {
+            parent[a] = s;
+            if (dfs(a)) return true;
+        } else if (a != parent[s])
+            return true;  // There is a cycle
+    }
+    return false;
+}
+
+int cycle(int s) {
+    for (int i = 0; i < V; i++) {
+        vis[i]    = false;
+        parent[i] = -1;
+    }
+    for (int i = 0; i < V; i++)
+        if (!vis[i])
+            if (dfs(i)) return true;
+    return false;
+}
+```
+
+```cpp
 // Dijkstra
 
 vi dijkstra(vector<vii> G, int s) {
