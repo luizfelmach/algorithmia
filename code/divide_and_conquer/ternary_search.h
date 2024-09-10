@@ -1,5 +1,6 @@
 // Ternary search
 // Very useful for finding max/min values between interval
+// The function on the interval must be unimodal (only 1 maximum)
 
 // F(x)
 // ^                 Goal

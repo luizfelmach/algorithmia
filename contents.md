@@ -4,6 +4,7 @@
 
 - [x] [Bisection Method](code/divide_and_conquer/bisection_method.h)
 - [x] [Ternary Search](code/divide_and_conquer/ternary_search.h)
+- [x] [Binary Search](code/divide_and_conquer/binary_search.h)
 
 **Sorting**
 

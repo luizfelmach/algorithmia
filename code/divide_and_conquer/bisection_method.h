@@ -1,5 +1,9 @@
 // Bisection Method
+
 // Very useful for finding roots of a function
+// With 100 repetitions the value already converges.
+// This implementation only works if the function in the range [lo, hi] has some
+// zero.
 
 // F(x)
 // ^     F(lo)
