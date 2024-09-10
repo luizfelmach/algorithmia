@@ -12,3 +12,5 @@
 **Graph Algorithms**
 
 - [x] [DFS](code/graph/dfs.h)
+- [x] [Strongly Connected Components](code/graph/strongly_connected_components.h)
+- [x] [Edmonds-Karp](code/graph/edmonds_karp.h)
