@@ -1,3 +1,11 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef vector<int> vi;
+
+const int VMAX = 10000;
+
+#define NOTEBOOK
 // Depth first search
 
 int        V;
@@ -14,4 +22,10 @@ void dfs(int s) {
         }
     }
     topsort.push_back(s);  // Only works in DAG.
+}
+#define NOTEBOOK
+
+int main() {
+    cout << "OK" << endl;
+    return 0;
 }
