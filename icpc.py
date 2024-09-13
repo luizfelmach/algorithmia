@@ -4,52 +4,34 @@
 # sudo pacman -S texlive-binextra texlive-latexextra texlive-fontsextra 
 
 import os
-title = "ICPC Library 🎈"
+import yaml
+from schema import Schema, Use, And, SchemaError 
+import subprocess
 
-def get_sections():
-  sections = []
-  section_name = None
-  with open("contents.md", 'r') as f:
-    for line in f:
-      line = line.strip()
-      if len(line) < 2: 
-        continue
-      if line[:2] == "**":
-        section_name = line[2:-2]
-        subsections = []
-        if section_name is not None:
-          sections.append((section_name, subsections))
-      elif line[: 6] == "- [x] ":
-        line = line[6: ]
-        subsection_name = line[line.find('[') + 1 : line.find(']')]
-        filename = line[line.find('(') + 1 : line.find(')')]
+CONTENT = "content.yaml"
 
-        if len(subsection_name) == 0:
-          raise ValueError("Subsection parse error: %" % line)
-        if section_name is None:
-          raise ValueError("Subsection given without section")
+def isfile(p):
+  if not os.path.isfile(p):
+    raise SchemaError(f"File {p} not exists.")
+  return p
 
-        # run_test(filename)
-        subsections.append((filename, subsection_name))
-  return sections
+SCHEMA = Schema({
+  str: [
+    {
+      str: And(str, Use(isfile))
+    }
+  ]
+})
 
-def run_test(filename):
-  if(get_style(filename) == "cpp"):
-    testFileName = filename.replace("code/", "test/")
-    testFileName = testFileName.replace(".h", "_test.cpp")
-
-    print("------------------------------------------")
-    print("Runnig the %s test: " % testFileName)
-    print("Compiling...")
-    retCompile = os.system("g++ -std='c++17' %s -o testApp" % testFileName)
-    if(retCompile != 0):
-      raise ValueError("Error compiling test %s!" % testFileName)
-    print("Runnig the test...")
-    retRun = os.system("./testApp")   
-    if(retRun == 0):
-      print("Passed the test!")
-    else:
-      raise ValueError("The %s test failed!" % testFileName)
+def load_content():
+  with open(CONTENT) as stream:
+    try:
+      content = yaml.safe_load(stream)
+      validated = SCHEMA.validate(content)
+      return validated
+    except SchemaError as e:
+      print(repr(e))
+      exit(1)
 
 def get_style(filename):
   ext = filename.lower().split('.')[-1]
@@ -63,6 +45,19 @@ def get_style(filename):
     return 'tex'
   else:
     return 'txt'
+
+
+def get_tex_section(section_name, subsections):
+  tex = '\\section{%s}\n' % section_name
+  for [subsection_name, filename] in subsections:
+    tex += '\\subsection{%s}\n' % subsection_name
+    if(get_style(filename) == 'tex'):
+      tex += '\\raggedbottom{\\input{%s}}\n' % filename
+    else:
+      tex += '\\raggedbottom\\lstinputlisting[style=%s]{%s}\n' % (get_style(filename), filename)
+    tex += '\\hrulefill\n'
+  tex += '\n'
+  return tex
 
 def get_tex(sections):
   tex = ''
@@ -79,13 +74,15 @@ def get_tex(sections):
   return tex
 
 if __name__ == "__main__":
-  sections = get_sections()
-  tex = get_tex(sections)
+  content = load_content()
+  content = list(content.items())
+  content = map(lambda x: (x[0], list(map(lambda y: list(y.items())[0], x[1]))), content)
+
+  tex = ''
+  for section in content:
+    tex += get_tex_section(section[0], section[1])
+    
   with open('contents.tex', 'w') as f:
     f.write(tex)
-  os.system("latexmk -pdf model/notebook.tex > generate_pdf.log")
-  os.system("mv notebook.pdf algorithms.pdf")
-  os.system("rm contents.tex")
-  os.system("rm notebook.*")
-  # os.system("rm testApp")   
-  os.system("rm generate_pdf.log")
+
+  subprocess.run(['pdflatex', '-interaction=nonstopmode', 'model/notebook.tex'])
