@@ -86,3 +86,6 @@ if __name__ == "__main__":
     f.write(tex)
 
   subprocess.run(['pdflatex', '-interaction=nonstopmode', 'model/notebook.tex'])
+  os.system("mv notebook.pdf algorithms.pdf")
+  os.system("rm contents.tex")
+  os.system("rm notebook.*")
