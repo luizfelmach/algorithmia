@@ -4,7 +4,7 @@ using namespace std;
 typedef vector<int> vi;
 
 // NOTEBOOK
-// Merge sort
+// Merge Sort
 // The provided implementation enhances this basic approach by counting the
 // number of inversions in the array.
 // Time complexity: O(nlogn)
