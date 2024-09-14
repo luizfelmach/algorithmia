@@ -11,6 +11,14 @@ from schema import Schema, Use, And, SchemaError
 
 CONTENT = "content.yaml"
 BUILD = "./.build"
+
+
+def file_exists(p):
+    if not os.path.isfile(p):
+        raise SchemaError(f"File {p} not exists.")
+    return p
+
+
 SCHEMA = Schema({str: [{str: And(str, Use(file_exists))}]})
 
 
@@ -29,13 +37,7 @@ def load_content():
         except SchemaError as e:
             print(repr(e))
             exit(1)
-
-
-def file_exists(p):
-    if not os.path.isfile(p):
-        raise SchemaError(f"File {p} not exists.")
-    return p
-
+    
 
 def build_filename(filename):
     return f"{BUILD}/{filename}"

@@ -1,3 +1,4 @@
+// NOTEBOOK
 // Bellman-Ford
 
 typedef tuple<int, int, int> iii;
@@ -25,3 +26,4 @@ int bellman_ford(int s) {
     }
     return false;
 }
+// NOTEBOOK

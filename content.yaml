@@ -12,5 +12,6 @@ Sorting:
 
 Graph Algorithms:
   - DFS: code/graph/dfs.h
+  - Bellman Ford: code/graph/bellman_ford.h
   - Strongly Connected Components: code/graph/strongly_connected_components.h
   - Edmonds-Karp: code/graph/edmonds_karp.h
