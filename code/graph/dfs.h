@@ -5,7 +5,7 @@ typedef vector<int> vi;
 
 const int VMAX = 10000;
 
-#define NOTEBOOK
+// NOTEBOOK
 // Depth first search
 
 int        V;
@@ -23,7 +23,7 @@ void dfs(int s) {
     }
     topsort.push_back(s);  // Only works in DAG.
 }
-#define NOTEBOOK
+// NOTEBOOK
 
 int main() {
     cout << "OK" << endl;
