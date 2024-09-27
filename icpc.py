@@ -107,7 +107,13 @@ def file_filter(content, kind):
     if len(res) == 0:
         return content
 
-    return res[0][1::]
+
+    content = ''
+    for i in res:
+        content += i
+    
+
+    return content
 
 
 def make_dirs(dirs):
