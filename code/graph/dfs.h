@@ -7,6 +7,7 @@ const int VMAX = 10000;
 
 // NOTEBOOK
 // Depth first search
+// Time Complexity: O(V + E)
 
 int        V;
 vector<vi> adj;
