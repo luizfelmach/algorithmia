@@ -1,0 +1,29 @@
+name: LaTeX PDF Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Install LaTeX packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-bin-extra texlive-latex-extra texlive-fonts-extra
+
+      - name: Run icpc.py script
+        run: |
+          python3 icpc.py
+
+      - name: Upload algorithms.pdf
+        uses: actions/upload-artifact@v3
+        with:
+          name: Algorithms PDF
+          path: algorithms.pdf
