@@ -4,7 +4,7 @@ C++:
 
 Divide and Conquer:
   - Bisection Method: code/divide_and_conquer/bisection_method.h
-  #- Ternary Search: code/divide_and_conquer/ternary_search.h
+  - Ternary Search: code/divide_and_conquer/ternary_search.h
   - Binary Search: code/divide_and_conquer/binary_search.h
 
 Sorting:
