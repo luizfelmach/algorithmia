@@ -5,9 +5,9 @@ on:
     branches:
       - main
     paths:
-      - code
+      - code/**
       - content.yaml
-      - model
+      - model/**
 
 jobs:
   build:
