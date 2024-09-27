@@ -46,7 +46,7 @@
 - Em um laço:
   - Incremente L em **uma** posição.
   - Incremente o valor de `i`.
-  - Se T e L forem iguais, pare o laço. (`i` será o tamanho do ciclo.)
+  - Se T e L forem iguais, pare o laço. (`i` será o tamanho do ciclo.).
 
 ### D&C (Divide and Conquer)
 
