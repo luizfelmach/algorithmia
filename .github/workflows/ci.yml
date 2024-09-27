@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    container: ubuntu
+    container: texlive/texlive
 
     steps:
       - name: Check out repository
