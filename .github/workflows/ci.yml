@@ -37,3 +37,25 @@ jobs:
         with:
           name: Algorithms PDF
           path: algorithms.pdf
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: "v1.0.${{ github.run_number }}" # Incrementa o número da release com o número da execução
+          release_name: "Release v1.0.${{ github.run_number }}"
+          body: "Release automática gerada pelo GitHub Actions"
+          draft: false
+          prerelease: false
+
+      - name: Upload algorithm.pdf to Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./algorithms.pdf
+          asset_name: algorithms.pdf
+          asset_content_type: application/pdf
