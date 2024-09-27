@@ -15,3 +15,6 @@ Graph Algorithms:
   - Bellman Ford: code/graph/bellman_ford.h
   - Strongly Connected Components: code/graph/strongly_connected_components.h
   - Edmonds-Karp: code/graph/edmonds_karp.h
+
+String:
+  - Knuth-Morris-Pratt’s (KMP) Algorithm: code/string/kmp.cpp
