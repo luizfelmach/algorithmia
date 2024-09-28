@@ -143,10 +143,13 @@ if __name__ == "__main__":
     for section in content:
         tex += get_tex_section(section[0], section[1])
 
+    
+    print(tex)
+
     with open("contents.tex", "w") as f:
         f.write(tex)
 
-    subprocess.run(["pdflatex", "-interaction=nonstopmode", "model/notebook.tex"])
+    subprocess.run(["latexmk", "-pdf", "-interaction=nonstopmode", "model/notebook.tex"])
     os.system("mv notebook.pdf algorithms.pdf")
     os.system("rm contents.tex")
     os.system("rm notebook.*")
