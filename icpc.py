@@ -107,12 +107,10 @@ def file_filter(content, kind):
     if len(res) == 0:
         return content
 
-
     content = ''
     for i in res:
         content += i
     
-
     return content
 
 
@@ -144,8 +142,6 @@ if __name__ == "__main__":
         tex += get_tex_section(section[0], section[1])
 
     
-    print(tex)
-
     with open("contents.tex", "w") as f:
         f.write(tex)
 
