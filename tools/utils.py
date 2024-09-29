@@ -3,7 +3,7 @@ import os
 
 def file_exists(file_path):
     if not os.path.isfile(file_path):
-        raise SchemaError(f"File {file_path} not exists.")
+        raise FileNotFoundError(f"File {file_path} not exists.")
     return file_path
 
 
@@ -18,6 +18,6 @@ def make_directories(directories):
             os.makedirs(directory)
 
 
-def filename_extension(filename):
+def file_ext(filename):
     ext = filename.lower().split(".")[-1]
     return ext

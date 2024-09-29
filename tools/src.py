@@ -5,18 +5,6 @@ import re
 import utils
 
 
-def flatten_directories(files, build_path):
-    directories = [f"{build_path}/{os.path.dirname(x)}" for x in files]
-    return directories
-
-
-def flatten_filename(content):
-    files = map(lambda x: x[1], content)
-    files = map(lambda x: x[1], [item for sub in files for item in sub])
-    files = list(files)
-    return files
-
-
 def pattern_extension(kind):
     if kind in ["c", "cc", "cpp", "h", "java"]:
         return r"\s*//\s*NOTEBOOK\b(.*?)\s*//\s*NOTEBOOK\b"
@@ -39,7 +27,7 @@ def file_filter(content, pattern):
 
 def generate_content(filename):
     content = utils.file_content(filename)
-    ext = utils.filename_extension(filename)
+    ext = utils.file_ext(filename)
     pattern = pattern_extension(ext)
 
     if not pattern:
@@ -48,9 +36,9 @@ def generate_content(filename):
     return file_filter(content, pattern)
 
 
-def build(content, build_path):
-    files = flatten_filename(content)
-    directories = flatten_directories(files, build_path)
+def build(sections, build_path):
+    files = [x for s in sections for x in s.files()]
+    directories = [f"{build_path}/{os.path.dirname(x)}" for x in files]
 
     utils.make_directories([build_path])
     utils.make_directories(directories)

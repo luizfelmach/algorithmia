@@ -34,7 +34,7 @@ jobs:
 
       - name: Run make_pdf.py script
         run: |
-          python3 tools/make_pdf.py content.yaml model/notebook.tex
+          python3 make_pdf.py
 
       - name: Upload algorithms.pdf
         uses: actions/upload-artifact@v3
