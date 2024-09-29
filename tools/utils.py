@@ -1,5 +1,6 @@
 import os
 
+
 def file_exists(file_path):
     if not os.path.isfile(file_path):
         raise SchemaError(f"File {file_path} not exists.")

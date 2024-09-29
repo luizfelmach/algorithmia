@@ -2,7 +2,6 @@
 
 import sys
 import yaml
-import os
 from utils import file_exists
 from schema import Schema, Use, And, SchemaError
 

@@ -1,9 +1,7 @@
 #!/usr/bin/python
 
-import sys
 import os
 import re
-import content
 import utils
 
 
@@ -17,6 +15,7 @@ def flatten_filename(content):
     files = map(lambda x: x[1], [item for sub in files for item in sub])
     files = list(files)
     return files
+
 
 def pattern_extension(kind):
     if kind in ["c", "cc", "cpp", "h", "java"]:
