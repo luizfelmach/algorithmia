@@ -43,8 +43,8 @@ ostream& operator<<(ostream& os, const pii& pa) {
 
 int main() {
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
+    cin.tie(0);
+    cout.tie(0);
     cout << setprecision(20) << fixed;
 
     return 0;
