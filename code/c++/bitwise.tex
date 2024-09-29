@@ -1,0 +1,22 @@
+
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Operation & Description \\ 
+        \hline
+        x \& (1 << k)            & Check if bit $k$ is active. \\
+        x \& \~{}  (1 << k)      & Set bit $k$ to 1. \\
+        x \& \~{} (1 << k)       & Set bit $k$ to 0. \\
+        x \^{} (1 << k)          & Invert bit $k$. \\
+        x \& (x - 1)             & Set the least significant bit from 1 to 0. \\
+        x \& -x                  & Set all bits except the least significant one to 0. \\
+        x \& \~{}  (x - 1)       & Invert all bits before the least significant one. \\
+        x \& (x - 1) == 0        & Check if a number is a power of two. \\
+        1LL << k                 & Shift for long long. \\
+        \_\_builtin\_clz(x)      & Number of leading zeros. \\
+        \_\_builtin\_ctz(x)      & Number of trailing zeros. \\
+        \_\_builtin\_popcount(x) & Number of 1 bits. \\
+        \_\_builtin\_parity(x)   & Parity 1 bits in x (0 for even, 1 for odd). \\
+        \hline
+    \end{tabular}
+\end{center}

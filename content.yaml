@@ -1,6 +1,7 @@
 C++:
   - Template: code/c++/template.cpp
   - Complexity: code/c++/complexity.tex
+  - Bitwise: code/c++/bitwise.tex
 
 Divide and Conquer:
   - Bisection Method: code/d&c/bisection_method.h
