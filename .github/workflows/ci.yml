@@ -32,9 +32,9 @@ jobs:
           python3 -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run icpc.py script
+      - name: Run make_pdf.py script
         run: |
-          python3 icpc.py
+          python3 tools/make_pdf.py content.yaml model/notebook.tex
 
       - name: Upload algorithms.pdf
         uses: actions/upload-artifact@v3
