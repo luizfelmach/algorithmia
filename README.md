@@ -1,4 +1,4 @@
-# Algorithms | Marathon Notebook
+# Marathon Notebook 🎈
 
 This repository is designed to generate a customizable notebook for programming marathons, inspired by the [ACM Stanford University team](https://github.com/jaehyunp/stanfordacm).
 
