@@ -9,4 +9,3 @@
 |  <= 1K  |         O(n^2)        | Bubble/Selection/Insertion Sort   |
 | <= 100K |      O(nlog(n))       | Merge Sort, building Segment Tree |
 |  <= 1M  | O(n), O(log(n)), O(1) | Busca binaria                     |
-
