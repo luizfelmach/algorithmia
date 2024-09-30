@@ -17,5 +17,9 @@ Graph Algorithms:
   - Strongly Connected Components: code/graph/strongly_connected_components.h
   - Edmonds-Karp: code/graph/edmonds_karp.h
 
+Math:
+  - Fibonacci: code/math/fibonacci.cpp
+  - Floyd’s Cycle-Finding Algorithm: code/math/cycle_finding.cpp
+
 String:
   - Knuth-Morris-Pratt’s (KMP) Algorithm: code/string/kmp.cpp
