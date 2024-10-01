@@ -5,7 +5,7 @@ using namespace std;
 const int NMAX = 100;
 
 // NOTEBOOK
-// Finding the coeﬃcients of the algebraic expansion of powers of a binomial
+// Finding the coefficients of the algebraic expansion of powers of a binomial
 // Its use dynamic programming to avoid number overflow
 //
 // Analytical function
