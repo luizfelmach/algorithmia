@@ -8,8 +8,11 @@ const int NMAX = 100;
 // Finding the coefficients of the algebraic expansion of powers of a binomial
 // Its use dynamic programming to avoid number overflow
 //
-// Analytical function
-// C n, k = n!/[(n-k)!k!] but this causes overflow for large numbers
+// Analytical formula
+//        C n, k = n!/[(n-k)!k!] but this causes overflow for large numbers
+// Recursive formula
+//        c(n, 0) = c(n, n) = 1
+//        c(n, k) = c(n-1, k-1) + c(n-1, k) for between 0 and n
 //
 // Time complexity
 //         O(n^2)
