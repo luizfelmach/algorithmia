@@ -19,6 +19,7 @@ Graph Algorithms:
 
 Math:
   - Sieve of Eratosthenes: code/math/sieve_of_eratosthenes.cpp
+  - Finding Prime Factors of a Number: code/math/prime_factors.cpp
   - GCD e LCM: code/math/gcd_lcm.cpp
   - Binomial Coefficients: code/math/binomial_coef.cpp
   - Fibonacci: code/math/fibonacci.cpp
