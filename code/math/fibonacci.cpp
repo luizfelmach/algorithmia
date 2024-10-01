@@ -30,6 +30,7 @@ ull fibo_iter(ull n) {
     return b;
 }
 
+// Binets Formula
 // Analytical function to calculate nth fibonacci
 // works until fibo_appr(70)
 // O(1)
