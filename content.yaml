@@ -17,5 +17,11 @@ Graph Algorithms:
   - Strongly Connected Components: code/graph/strongly_connected_components.h
   - Edmonds-Karp: code/graph/edmonds_karp.h
 
+Math:
+  - GCD e LCM: code/math/gcd_lcm.cpp
+  - Fibonacci: code/math/fibonacci.cpp
+  - Fast Matrix Exponentiation: code/math/fast_matrix_exp.cpp
+  - Floyd’s Cycle-Finding Algorithm: code/math/cycle_finding.cpp
+
 String:
   - Knuth-Morris-Pratt’s (KMP) Algorithm: code/string/kmp.cpp
