@@ -18,6 +18,7 @@ Graph Algorithms:
   - Edmonds-Karp: code/graph/edmonds_karp.h
 
 Math:
+  - Sieve of Eratosthenes: code/math/sieve_of_eratosthenes.cpp
   - GCD e LCM: code/math/gcd_lcm.cpp
   - Binomial Coefficients: code/math/binomial_coef.cpp
   - Fibonacci: code/math/fibonacci.cpp
