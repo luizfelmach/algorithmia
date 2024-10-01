@@ -10,6 +10,7 @@ const int NMAX = 100;
 //
 // Analytical formula
 //        C n, k = n!/[(n-k)!k!] but this causes overflow for large numbers
+//                               and maybe slower for bigint
 // Recursive formula
 //        c(n, 0) = c(n, n) = 1
 //        c(n, k) = c(n-1, k-1) + c(n-1, k) for between 0 and n
