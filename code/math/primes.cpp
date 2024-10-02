@@ -2,6 +2,7 @@
 using namespace std;
 
 typedef unsigned long long ull;
+typedef vector<int>        vi;
 
 // NOTEBOOK
 // Naive check primality
@@ -32,14 +33,20 @@ bool is_prime(ull n) {
 // :.....:.....:.....:.....:.....:.....:.....:.....:.....:.....:.....:.....:
 // NOTEBOOK
 
+// To generate ascii table: https://ozh.github.io/ascii-tables/
+
 int main() {
+    vi  primes;
     int count = 0;
     for (int i = 1; i < 1000; i++) {
-        if (count % 12 == 0) cout << endl;
-        if (is_prime(i)) {
-            cout << i << " ";
-            count++;
-        }
+        if (is_prime(i)) primes.push_back(i);
     }
+
+    for (auto i : primes) {
+        if (count % 12 == 0) cout << endl;
+        cout << i << " ";
+        count++;
+    }
+
     return 0;
 }
