@@ -9,7 +9,7 @@ typedef vector<int>        vi;
 // Algorithm to find prime factors of a number
 // And also some useful things from factorization
 // Remember n = p1^a1 * p2^a2 * ... * pn ^ an
-// map<ull, ull> means map<p1, a1>
+// map<ull, ull> means map<pn, an>
 
 ull primes[] = {2, 3, 5, 7, 11, 13};  // This must be filled with sieve
 // Factorization should not work if the number
