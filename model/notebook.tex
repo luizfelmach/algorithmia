@@ -62,7 +62,11 @@
 \lstdefinestyle{txt}{
   style=shared,
 }
-\lstset{escapechar=@}
+\lstset{
+  escapechar=@,
+  escapeinside={/*}{*/},
+  extendedchars=true,   
+}
 
 \pagestyle{fancy}
 \fancyhead[L]{Algorithms}
