@@ -41,15 +41,6 @@ bool is_prime(ull N) {
         if (N % i == 0) return false;
     return true;  // note: only work for N <= (last prime in vi "primes")^2
 }
-
-// Naive check primality
-bool prime(ull n) {
-    if (n < 2) return false;
-    for (ull x = 2; x * x <= n; x++) {
-        if (n % x == 0) return false;
-    }
-    return true;
-}
 // NOTEBOOK
 
 int main() {
