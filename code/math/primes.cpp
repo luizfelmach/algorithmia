@@ -5,9 +5,9 @@ typedef unsigned long long ull;
 
 // NOTEBOOK
 // Naive check primality
-// Time complexity /*$O(\sqrt{n})$*/
+// Time complexity: /*$O(\sqrt{n})$*/
 
-bool prime(ull n) {
+bool is_prime(ull n) {
     if (n < 2) return false;
     for (ull x = 2; x * x <= n; x++)
         if (n % x == 0) return false;
@@ -36,7 +36,7 @@ int main() {
     int count = 0;
     for (int i = 1; i < 1000; i++) {
         if (count % 12 == 0) cout << endl;
-        if (prime(i)) {
+        if (is_prime(i)) {
             cout << i << " ";
             count++;
         }
