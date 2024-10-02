@@ -21,5 +21,3 @@ int main() {
     cout << modpow(321, 34, 97) << endl;
     return 0;
 }
-
-// NOTEBOOK

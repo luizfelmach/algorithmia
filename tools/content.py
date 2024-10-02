@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 import sys
 import yaml
 from utils import file_exists
