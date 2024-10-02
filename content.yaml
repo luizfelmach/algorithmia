@@ -18,6 +18,7 @@ Graph Algorithms:
   - Edmonds-Karp: code/graph/edmonds_karp.h
 
 Math:
+  - Modular Arithmetic: code/math/modular_arithmetic.tex
   - Sieve of Eratosthenes: code/math/sieve_of_eratosthenes.cpp
   - Finding Prime Factors of a Number: code/math/prime_factors.cpp
   - GCD e LCM: code/math/gcd_lcm.cpp
