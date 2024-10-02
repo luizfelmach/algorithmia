@@ -5,12 +5,9 @@ using namespace std;
 typedef unsigned long long ull;
 
 // NOTEBOOK
+// Modular Exponentiation (/*$ x^n \mod m $*/)
+// Time complexity /*$O(log(n))$*/
 
-// Modular Exponentiation
-// Time complexity
-//         O(log(n))
-
-/*\[x^n \mod m\]*/
 ull modpow(ull x, ull n, ull m) {
     if (n == 0) return 1 % m;
     ull u = modpow(x, n / 2, m);
