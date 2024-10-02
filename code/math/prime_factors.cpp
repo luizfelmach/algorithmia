@@ -7,99 +7,85 @@ typedef vector<int>        vi;
 
 // NOTEBOOK
 // Algorithm to find prime factors of a number
-
-// Helpful variables produced through factorization
-
-ull num_pf;   // Count the number of prime factors of N
-ull num_div;  // Count the number of divisors of N
-ull sum_div;  // Sum the divisors of N
-
-ull euler_phi;  // Eulers totient function (coprimes)
-                // Number of coprimes from [1...N-1]
-                // a, b are coprimes if gcd(a, b) = 1
-                // euler_phi(N) = n-1 if N is prime
+// And also some useful things from factorization
+// Remember n = p1^a1 * p2^a2 * ... * pn ^ an
+// map<ull, ull> means map<p1, a1>
 
 ull primes[] = {2, 3, 5, 7, 11, 13};  // This must be filled with sieve
+// Factorization should not work if the number
+// contains a prime that is not in this list
 
-vi prime_factors(ull N) {
-    vi  factors;
-    ull PF_idx = 0, PF = primes[PF_idx];
-
-    num_pf    = 0;
-    num_div   = 1;
-    sum_div   = 1;
-    euler_phi = N;
-
+map<ull, ull> prime_factors(ull N) {
+    map<ull, ull> factors;  // <pn, an>
+    ull           PF_idx = 0, PF = primes[PF_idx];
     while (PF * PF <= N) {
-        ull power = 0;
-        if (N % PF == 0) euler_phi -= euler_phi / PF;
         while (N % PF == 0) {
             N /= PF;
-            factors.push_back(PF);
-            power += 1;
-            num_pf += 1;
+            factors[PF] += 1;
         }
-        num_div *= (power + 1);
-        sum_div *= ((ull)pow((double)PF, power + 1.0) - 1) / (PF - 1);
         PF = primes[++PF_idx];
     }
-    if (N != 1) {
-        factors.push_back(N);
-        num_pf += 1;
-        num_div *= 2;
-        sum_div *= ((ull)pow((double)N, 2.0) - 1) / (N - 1);
-        euler_phi -= euler_phi / N;
-    }
+    if (N != 1) factors[N] += 1;
     return factors;
+}
+
+ull count_prime_factors(map<ull, ull> factors) {
+    ull result = 0;
+    for (auto [p, a] : factors) {
+        result += a;
+    }
+    return result;
+}
+
+ull num_divisors(map<ull, ull> factors) {
+    ull result = 1;
+    for (auto [p, a] : factors) {
+        result *= (a + 1);
+    }
+    return result;
+}
+
+ull sum_divisors(map<ull, ull> factors) {
+    ull result = 1;
+    for (auto [p, a] : factors) {
+        result *= ((ull)pow((double)p, a + 1.0) - 1) / (p - 1);
+    }
+    return result;
+}
+
+// Numbers a and b are coprime if gcd(a, b) = 1. Eulers totient function TOT(n)
+// gives the number of coprime numbers to n between 1 and n. For example,
+// TOT(12) = 4, because 1, 5, 7 and 11 are coprime to 12.
+ull eulers_totient(ull N) {
+    ull           result  = N;
+    map<ull, ull> factors = prime_factors(N);
+    for (auto [p, a] : factors) {
+        result -= result / p;
+    }
+    return result;
 }
 // NOTEBOOK
 
+void show_factors(map<ull, ull> factors) {
+    int i = 0;
+    for (auto [p, a] : factors) {
+        cout << p << "^" << a;
+        if (++i < factors.size()) cout << " * ";
+    }
+}
+
 int main() {
-    vi r = prime_factors(142391208960LL);
+    vector<ull> numbers = {142391208960ULL, 13, 30, 36, 1, 2, 3};
 
-    for (auto i : r) {
-        cout << i << " ";
+    for (auto i : numbers) {
+        auto factors = prime_factors(i);
+        cout << i << ": ";
+        show_factors(factors);
+        cout << endl;
+        cout << "Count prime factors: " << count_prime_factors(factors) << endl;
+        cout << "Total of divisors: " << num_divisors(factors) << endl;
+        cout << "Sum of divisors: " << sum_divisors(factors) << endl;
+        cout << "Eulers totient: " << eulers_totient(i) << endl;
+        cout << endl;
     }
-    cout << endl;
-    cout << "Count factors: " << num_pf << endl;
-    cout << "Count divs: " << num_div << endl;
-    cout << "Sum divs: " << sum_div << endl;
-    cout << "Coprimes: " << euler_phi << endl;
-    cout << endl;
-
-    r = prime_factors(13);
-
-    for (auto i : r) {
-        cout << i << " ";
-    }
-    cout << endl;
-    cout << "Count factors: " << num_pf << endl;
-    cout << "Count divs: " << num_div << endl;
-    cout << "Sum divs: " << sum_div << endl;
-    cout << "Coprimes: " << euler_phi << endl;
-    cout << endl;
-
-    r = prime_factors(60);
-
-    for (auto i : r) {
-        cout << i << " ";
-    }
-    cout << endl;
-    cout << "Count factors: " << num_pf << endl;
-    cout << "Count divs: " << num_div << endl;
-    cout << "Sum divs: " << sum_div << endl;
-    cout << "Coprimes: " << euler_phi << endl;
-    cout << endl;
-
-    r = prime_factors(36);
-
-    for (auto i : r) {
-        cout << i << " ";
-    }
-    cout << endl;
-    cout << "Count factors: " << num_pf << endl;
-    cout << "Count divs: " << num_div << endl;
-    cout << "Sum divs: " << sum_div << endl;
-    cout << "Coprimes: " << euler_phi << endl;
-    cout << endl;
 }
