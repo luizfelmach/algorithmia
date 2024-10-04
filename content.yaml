@@ -20,6 +20,7 @@ Graph Algorithms:
 Math:
   - Big Integer: code/math/big_integer.java
   - Modular Arithmetic: code/math/modular_arithmetic.tex
+  - Linear Diophantine Equation: code/math/diophantine_equation.cpp
   - Modular Exponentiation: code/math/modpow.cpp
   - Primes: code/math/primes.cpp
   - Sieve of Eratosthenes: code/math/sieve_of_eratosthenes.cpp

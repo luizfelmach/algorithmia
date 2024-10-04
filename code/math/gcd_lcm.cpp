@@ -1,5 +1,10 @@
-// Time complexity:
-//        O(log(n)) -> n = max(a, b)
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef pair<int, int> pii;
+
+// NOTEBOOK
+// Time complexity: /*$O(\log(n)) \quad \text{where} \quad n = \max(a, b)$*/
 
 // GCD and LCM of more than 2 numbers is
 // equal to gcd(a, gcd(b, c)), lcm(a, lcm(b, c))
@@ -13,3 +18,4 @@ int gcd(int a, int b) {
 int lcm(int a, int b) {
     return a * (b / gcd(a, b));
 }
+// NOTEBOOK
