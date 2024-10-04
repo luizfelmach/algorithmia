@@ -3,12 +3,19 @@
 using namespace std;
 
 // NOTEBOOK
-// Algoritm to perform Catalans Number
+// Algoritm to find Catalan's Number
 //
-// Analytical formula: cat(n) = (2n)!/[n!(n+1)!]
-// Recursive formula: cat(0) = cat(1) = 1
-//                    cat(n) = sum(cat(k)*cat(n-1-k)) n >=2
-//                             from k=0 -> k=n-1
+// Analytical formula: /*$cat(n) = \binom{2n}{n} = \frac{(2n)!}{n!(n+1)!}$*/
+// Recursive formula:
+/*
+\[
+\text{cat}(0) = \text{cat}(1) = 1
+\]
+\[
+\text{cat}(n) = \sum_{k=0}^{n-1} \text{cat}(k) \cdot \text{cat}(n-1-k) \quad
+\text{for } n \geq 2
+\]
+*/
 
 // 1. Cat(n) counts the number of distinct binary trees with n vertices, e.g.
 // for n = 3:

@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 typedef unsigned long long ull;
@@ -7,13 +6,14 @@ typedef unsigned long long ull;
 const int NMAX = 1000;
 
 // NOTEBOOK
-const double PHI = (1.0 + sqrt(5)) / 2.0;  // Golden Ratio
-ull          memo[NMAX];                   // Memoization
+// Golden Ratio (/*$\frac{1+\sqrt{5}}{2}$*/)
+const double PHI = (1.0 + sqrt(5)) / 2.0;
+ull          dp[NMAX];  // Memoization
 
 // Fibonacci recursive
 ull fibo(ull n) {
     if (n <= 1) return n;
-    ull &ans = memo[n];  // Dynamic Programming
+    ull &ans = dp[n];  // Dynamic Programming
     if (ans != -1) return ans;
     return ans = fibo(n - 1) + fibo(n - 2);
 }
@@ -30,10 +30,10 @@ ull fibo_iter(ull n) {
     return b;
 }
 
-// Binets Formula
-// Analytical function to calculate nth fibonacci
-// works until fibo_appr(70)
-// O(1)
+// Binet's Formula (/*$\frac{\phi^n-(-\phi)^{-n}}{\sqrt{5}}$*/)
+// Analytical formula to calculate nth fibonacci
+// Works for /*$ n \leq 70$*/
+// Time complexity: /*$O(1)$*/
 ull fibo_appr(ull n) {
     double _n  = (double)n;
     double res = (pow(PHI, _n) - pow(-PHI, -_n)) / sqrt(5);
@@ -42,7 +42,7 @@ ull fibo_appr(ull n) {
 // NOTEBOOK
 
 int main() {
-    memset(memo, -1, sizeof(memo));
+    memset(dp, -1, sizeof(dp));
     for (int i = 0; i < 80; i++) {
         ull f_real = fibo(i);
         ull f_iter = fibo_iter(i);

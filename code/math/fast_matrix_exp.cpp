@@ -8,8 +8,7 @@ typedef unsigned long long ull;
 // Algorithm to perform quick exponentiation of square matrices
 // Used to calculate the Fibonacci value using a special matrix
 //
-// Time complexity
-//         O (m^3log(n))
+// Time complexity: /*$O(m^3 \cdot log(n))$*/
 //
 // INPUT
 //     - Square matrix (m x m)

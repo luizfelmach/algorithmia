@@ -11,18 +11,12 @@ int f(int x) {
 // NOTEBOOK
 // Floyds Cycle-Finding Algorithm
 //
-// Time complexity:
-//     O(mu + lambda)
-//
-// INPUT
-//     - function f, f: S -> S
-//                  Maps a number in set S to another
-//                  number in the same set.
-//     - x0, start position
-//
-// OUTPUT
-//     - mu, start of cycle in f
-//     - lambda, cycle length in f
+// Time complexity: /*$O(\mu + \lambda)$*/
+/* \[ f: S \to S \]
+\[ f(x) = \text{Maps a number in set S to another number in the same set.}\]
+*/
+// /*$\mu$*/: start of cycle in f
+// /*$\lambda$*/: cycle length in f
 
 ii floyd_cycle_finding(int x0) {
     int tortoise = f(x0);
