@@ -18,6 +18,7 @@ Graph Algorithms:
   - Edmonds-Karp: code/graph/edmonds_karp.h
 
 Math:
+  - Big Integer: code/math/big_integer.java
   - Modular Arithmetic: code/math/modular_arithmetic.tex
   - Modular Exponentiation: code/math/modpow.cpp
   - Primes: code/math/primes.cpp
