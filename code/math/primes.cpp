@@ -4,6 +4,18 @@ using namespace std;
 typedef unsigned long long ull;
 typedef vector<int>        vi;
 
+// Binary Exponentiation
+ull binpow(ull x, ull n, ull m) {
+    x %= m;
+    ull res = 1;
+    while (n > 0) {
+        if (n & 1) res = (res * x) % m;
+        x = (x * x) % m;
+        n >>= 1;
+    }
+    return res;
+}
+
 // NOTEBOOK
 // Naive check primality
 // Time complexity: /*$O(\sqrt{n})$*/
@@ -14,6 +26,48 @@ bool is_prime(ull n) {
         if (n % x == 0) return false;
     return true;
 }
+// Fermat primality test
+// This is a probabilistic primality test.
+// Time complexity: /*$O(k \cdot log(n))$*/
+// This test use Fermat's Theorem: /*$a^{p-1} \equiv 1 \pmod{p}$*/
+bool fermats_prime(int n, int k = 5) {
+    if (n < 4) return n == 2 || n == 3;
+    for (int i = 0; i < k; i++) {
+        int a = 2 + rand() % (n - 3);
+        if (binpow(a, n - 1, n) != 1) return false;
+    }
+    return true;
+}
+
+// Miller-Rabin primality test
+// This is also too probabilistic primality test.
+// Time complexity: /*$O(k \cdot log(n))$*/
+// This is an improvement on the Fermat test and is safer but slightly slower
+bool check_composite(ull n, ull a, ull d, int s) {
+    ull x = binpow(a, d, n);
+    if (x == 1 || x == n - 1) return false;
+    for (int r = 1; r < s; r++) {
+        x = x * x % n;
+        if (x == n - 1) return false;
+    }
+    return true;
+}
+
+bool miller_rabin_prime(ull n, int iter = 5) {
+    if (n < 4) return n == 2 || n == 3;
+    int s = 0;
+    ull d = n - 1;
+    while ((d & 1) == 0) {
+        d >>= 1;
+        s++;
+    }
+    for (int i = 0; i < iter; i++) {
+        int a = 2 + rand() % (n - 3);
+        if (check_composite(n, a, d, s)) return false;
+    }
+    return true;
+}
+
 // Primes < 1k
 // .........................................................................
 // :   2 :   3 :   5 :   7 :  11 :  13 :  17 :  19 :  23 :  29 :  31 :  37 :
