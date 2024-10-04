@@ -17,6 +17,10 @@ x = x_0 + k \cdot \frac{b}{g}
 y = y_0 - k \cdot \frac{a}{g}
 \]
 */
+// This can be used to solve: /*$a \cdot x \equiv b \mod n$*/ with:
+/*
+\[ a \cdot x + n \cdot k = b \]
+*/
 
 int x, y;
 
@@ -57,7 +61,7 @@ bool all_solution(int a, int b, int c) {
     x *= c / d;
     y *= c / d;
 
-    for (int i = 0; i < 240; i++) {
+    for (int i = -100; i < 100; i++) {
         int x1 = x + (b * i) / d;
         int y1 = y - a * i / d;
         if (a < 0) x1 = -x1;
@@ -76,8 +80,13 @@ int main() {
         cout << "No solution." << endl;
     }
 
-    if (!all_solution(25, 18, 839)) {
-        cout << "No solution." << endl;
+    // if (!all_solution(25, 18, 839)) {
+    //     cout << "No solution." << endl;
+    // }
+
+    // 256x = 179 mod 337
+    if (any_solution(256, 337, 179)) {
+        cout << x << " " << y << endl;
     }
 
     return 0;
