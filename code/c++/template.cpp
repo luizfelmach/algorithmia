@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#define MOD(a, m) ((a) % (m) + (m)) % (m)
 #define fi first
 #define se second
 #define forn(i, n) for (int i = 0; i < (int)n; ++i)
