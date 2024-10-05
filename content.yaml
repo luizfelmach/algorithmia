@@ -34,3 +34,6 @@ Math:
 
 String:
   - Knuth-Morris-Pratt’s (KMP) Algorithm: code/string/kmp.cpp
+
+Miscellaneous:
+  - Subsets: code/miscellaneous/subsets.cpp
