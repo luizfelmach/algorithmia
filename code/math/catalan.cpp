@@ -5,7 +5,8 @@ using namespace std;
 // NOTEBOOK
 // Algoritm to find Catalan's Number
 //
-// Analytical formula: /*$cat(n) = \binom{2n}{n} = \frac{(2n)!}{n!(n+1)!}$*/
+// Analytical formula:
+/*\[cat(n) = \frac{1}{n+1} \cdot \binom{2n}{n} = \frac{(2n)!}{n!(n+1)!}\]*/
 // Recursive formula:
 /*
 \[
