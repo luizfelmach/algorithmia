@@ -29,8 +29,11 @@ Math:
   - Binomial Coefficients: code/math/binomial_coef.cpp
   - Fibonacci: code/math/fibonacci.cpp
   - Catalan: code/math/catalan.cpp
-  - Fast Matrix Exponentiation: code/math/fast_matrix_exp.cpp
+  - Matrix: code/math/matrix.cpp
   - Floyd’s Cycle-Finding Algorithm: code/math/cycle_finding.cpp
 
 String:
   - Knuth-Morris-Pratt’s (KMP) Algorithm: code/string/kmp.cpp
+
+Miscellaneous:
+  - Subsets: code/miscellaneous/subsets.cpp
